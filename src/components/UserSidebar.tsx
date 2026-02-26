@@ -62,9 +62,9 @@ interface UserSidebarProps {
 export function UserSidebar({ username, email, isPremium }: UserSidebarProps) {
     const pathname = usePathname();
     const router = useRouter();
-    const supabase = createClient();
 
     async function handleLogout() {
+        const supabase = createClient();
         await supabase.auth.signOut();
         router.push("/login");
         router.refresh();
@@ -111,8 +111,8 @@ export function UserSidebar({ username, email, isPremium }: UserSidebarProps) {
                             key={item.href}
                             href={item.href}
                             className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${isActive
-                                    ? "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary"
-                                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                                ? "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary"
+                                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                                 }`}
                         >
                             <span className={isActive ? "text-primary" : "text-gray-400"}>
