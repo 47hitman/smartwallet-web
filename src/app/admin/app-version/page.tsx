@@ -10,7 +10,6 @@ interface AppConfig {
 }
 
 export default function AppVersionPage() {
-    const supabase = createClient();
     const [config, setConfig] = useState<AppConfig | null>(null);
     const [version, setVersion] = useState("");
     const [updateUrl, setUpdateUrl] = useState("");
@@ -25,6 +24,7 @@ export default function AppVersionPage() {
 
     useEffect(() => {
         async function fetchConfig() {
+            const supabase = createClient();
             const { data, error } = await supabase
                 .from("app_config")
                 .select("version, update_url, updated_at")
@@ -39,7 +39,7 @@ export default function AppVersionPage() {
             setLoading(false);
         }
         fetchConfig();
-    }, [supabase]);
+    }, []);
 
     async function handleSave() {
         if (!version.trim()) {
@@ -52,6 +52,7 @@ export default function AppVersionPage() {
         }
 
         setSaving(true);
+        const supabase = createClient();
         const { error } = await supabase
             .from("app_config")
             .update({

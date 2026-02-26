@@ -66,8 +66,8 @@ export default async function HistoryPage() {
                                         <td className="px-5 py-3">
                                             <span
                                                 className={`text-xs font-semibold px-2.5 py-1 rounded-full ${tx.type === "Pemasukan"
-                                                        ? "bg-accent/10 text-accent"
-                                                        : "bg-danger/10 text-danger"
+                                                    ? "bg-accent/10 text-accent"
+                                                    : "bg-danger/10 text-danger"
                                                     }`}
                                             >
                                                 {tx.type}

@@ -13,7 +13,6 @@ interface UserProfile {
 }
 
 export default function AdminUsersPage() {
-    const supabase = createClient();
     const [users, setUsers] = useState<UserProfile[]>([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
@@ -32,6 +31,7 @@ export default function AdminUsersPage() {
 
     const fetchUsers = useCallback(async () => {
         setLoading(true);
+        const supabase = createClient();
         const { data: profiles, error } = await supabase
             .from("profiles")
             .select("id, user_id, is_premium, created_at, email, username")
@@ -45,7 +45,7 @@ export default function AdminUsersPage() {
 
         setUsers(profiles as UserProfile[]);
         setLoading(false);
-    }, [supabase]);
+    }, []);
 
     useEffect(() => {
         fetchUsers();
