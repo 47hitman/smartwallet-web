@@ -1,4 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
+
+export const dynamic = "force-dynamic";
 import { AnalyticsCharts } from "@/components/AnalyticsCharts";
 
 export default async function AnalyticsPage() {

@@ -1,4 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
+
+export const dynamic = "force-dynamic";
 import { UserSidebar } from "@/components/UserSidebar";
 
 export default async function DashboardLayout({
